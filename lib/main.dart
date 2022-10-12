@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Calculator',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: "Pretendard",
         primarySwatch: Colors.blue,
       ),
       home: const CalculatorScreen(),
