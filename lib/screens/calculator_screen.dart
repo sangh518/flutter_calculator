@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_calculator/widgets/header_display.dart';
+import 'package:flutter_calculator/widgets/input_pad.dart';
 
-class CalculatorScreen extends StatefulWidget {
+const kSidePadding = 14.0;
+
+class CalculatorScreen extends StatelessWidget {
   const CalculatorScreen({Key? key}) : super(key: key);
 
   @override
-  State<CalculatorScreen> createState() => _CalculatorScreenState();
-}
-
-class _CalculatorScreenState extends State<CalculatorScreen> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: _buildBody(),
       ),
@@ -18,8 +18,16 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   }
 
   Widget _buildBody() {
-    return Center(
-      child: Text('Body'),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kSidePadding),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: const [
+          Expanded(child: HeaderDisplay()),
+          InputPad(),
+          SizedBox(height: kSidePadding),
+        ],
+      ),
     );
   }
 }
