@@ -6,7 +6,7 @@ import 'package:flutter_calculator/models/input_type.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 const _kMaxInputLength = 15;
-const _kPrecisionLength = 5;
+const _kMaxDecimalLength = 5;
 
 class CalculatorViewModel extends ChangeNotifier {
   String _inputExpression = '';
@@ -138,7 +138,14 @@ class CalculatorViewModel extends ChangeNotifier {
     if (value.truncateToDouble() == value) {
       return value.truncate().toString();
     } else {
-      return value.toStringAsPrecision(_kPrecisionLength);
+      var text = value.toString();
+      var decimalIndex = text.indexOf('.');
+      var decimalLength = text.length - decimalIndex - 1;
+      if (decimalLength > _kMaxDecimalLength) {
+        text = value.toStringAsFixed(_kMaxDecimalLength);
+      }
+
+      return text;
     }
   }
 }
