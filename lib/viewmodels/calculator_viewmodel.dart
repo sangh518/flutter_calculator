@@ -9,7 +9,7 @@ const _kMaxInputLength = 15;
 const _kMaxDecimalLength = 5;
 
 class CalculatorViewModel extends ChangeNotifier {
-  String _inputExpression = '';
+  String _inputExpression = '0';
   double result = 0;
 
   String get inputHeaderText => _inputExpression.isEmpty
